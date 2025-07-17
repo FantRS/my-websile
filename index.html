@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ernesto Seredinskiy - Card</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="theme-toggle">
+            <button id="toggleTheme">🌙 Toggle Theme</button>
+        </div>
+
+        <div class="snow"></div>
+
+        <div class="card">
+            <div class="card-header">
+                <h1>Rostyslav Kashper</h1>
+                <p>Rust Backend Developer</p>
+            </div>
+            <div class="card-body">
+                <div class="left-column">
+                    <div class="info hoverable">
+                        <span class="icon">💬</span>
+                        <a href="https://t.me/RostykFant" target="_blank"
+                            >@RostykFant</a
+                        >
+                    </div>
+                    <div class="info hoverable">
+                        <span class="icon">📧</span>
+                        <span>rostykkashper2@gmail.com</span>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="info hoverable">
+                        <span class="icon">💻</span>
+                        <a href="https://github.com/FantRS" target="_blank"
+                            >github.com/FantRS</a
+                        >
+                    </div>
+                    <div class="info hoverable">
+                        <span class="icon">📍</span>
+                        <span>Poltava, Ukraine</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p>Let’s create something amazing together</p>
+                <a href="cv.pdf" class="cv-button" download>📄 Download CV</a>
+            </div>
+        </div>
+
+        <script>
+            // Встановлюємо тему при завантаженні сторінки згідно з системною
+            const html = document.documentElement;
+
+            function applySystemTheme() {
+                if (
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches
+                ) {
+                    html.dataset.theme = "dark";
+                } else {
+                    html.dataset.theme = "light";
+                }
+            }
+
+            // Застосовуємо тему при завантаженні
+            applySystemTheme();
+
+            // Додаємо слухача на зміну системної теми в реальному часі
+            if (window.matchMedia) {
+                window
+                    .matchMedia("(prefers-color-scheme: dark)")
+                    .addEventListener("change", (e) => {
+                        html.dataset.theme = e.matches ? "dark" : "light";
+                    });
+            }
+
+            // Обробник кнопки перемикання теми вручну
+            const toggleBtn = document.getElementById("toggleTheme");
+            toggleBtn.addEventListener("click", () => {
+                html.dataset.theme =
+                    html.dataset.theme === "light" ? "dark" : "light";
+            });
+        </script>
+    </body>
+</html>
